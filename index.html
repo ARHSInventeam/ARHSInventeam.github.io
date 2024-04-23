@@ -9,4 +9,75 @@
     <h1>SARTopo Map</h1>
     <iframe src="https://sartopo.com/m/8G1DF" width="100%" height="600" frameborder="0" allowfullscreen></iframe>
 </body>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Health Stats Dashboard</title>
+    <style>
+        /* Define initial styles */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+        .stat {
+            font-size: 24px;
+            padding: 20px;
+            border: 2px solid #ccc;
+            margin: 10px;
+            transition: background-color 0.5s, color 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <h1>Live Health Statistics</h1>
+    <div class="stat" id="heartRate">Heart Rate: 75 BPM</div>
+    <div class="stat" id="bloodPressure">Blood Pressure: 120/80</div>
+
+    <script>
+        // Function to update the heart rate and change color based on the value
+        function updateHeartRate() {
+            const heartRateElement = document.getElementById("heartRate");
+            // Simulate a random heart rate between 60 and 160
+            const heartRate = Math.floor(Math.random() * 100) + 60;
+            heartRateElement.textContent = `Heart Rate: ${heartRate} BPM`;
+
+            // Change color based on heart rate
+            if (heartRate < 90) {
+                heartRateElement.style.backgroundColor = "#cce5ff"; // Light blue
+                heartRateElement.style.color = "#000";
+            } else if (heartRate < 120) {
+                heartRateElement.style.backgroundColor = "#ffe5cc"; // Light orange
+                heartRateElement.style.color = "#000";
+            } else {
+                heartRateElement.style.backgroundColor = "#ffcccc"; // Light red
+                heartRateElement.style.color = "#000";
+            }
+        }
+
+        // Function to update blood pressure and change color based on the value
+        function updateBloodPressure() {
+            const bloodPressureElement = document.getElementById("bloodPressure");
+            // Simulate random blood pressure values
+            const systolic = Math.floor(Math.random() * 40) + 110; // 110-150
+            const diastolic = Math.floor(Math.random() * 20) + 70; // 70-90
+            bloodPressureElement.textContent = `Blood Pressure: ${systolic}/${diastolic}`;
+
+            // Change color based on systolic blood pressure
+            if (systolic < 130) {
+                bloodPressureElement.style.backgroundColor = "#cce5ff"; // Light blue
+            } else if (systolic < 140) {
+                bloodPressureElement.style.backgroundColor = "#ffe5cc"; // Light orange
+            } else {
+                bloodPressureElement.style.backgroundColor = "#ffcccc"; // Light red
+            }
+        }
+
+        // Simulate live updates every 2 seconds
+        setInterval(() => {
+            updateHeartRate();
+            updateBloodPressure();
+        }, 2000); // Update every 2 seconds
+    </script>
+</body>
 </html>
