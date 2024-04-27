@@ -75,6 +75,6 @@ def relayDataToSartopo(data, markerData):
   requests.get("https://caltopo.com/api/v1/position/report/%s?id=%s&lat=%f&lng=%f" %(markerName, markerFID, data["lat"], data["lon"]))
   sts2.editFeature(id=markerID,className="LiveTrack", title=markerName, properties={'stroke-opacity': 1, 'creator': userID, 'pattern': 'M-5 5L0 -5M5 5L0 -5,20,40,T', 'stroke-width': 1, 'title': markerName, 'deviceId': 'FLEET:%s-%s' %(markerName, markerFID), 'stroke': statusToColor[statReport], 'class': 'LiveTrack', 'updated': 1713897329000}, timeout=10000)
 
-relayDataToSartopo({"heartRate" : 100, "spo2" : 95, "temp" : 98, "lat" : 42.38052, "lon" : -72.51561}, markerData)
+relayDataToSartopo({"heartRate" : 100, "spo2" : 95, "temp" : 98, "lat" : 42.38052, "lon" : -72.51561}, markerData) #the heartrate, spo2, temp, lat, and long are hardcoded here
 
 
