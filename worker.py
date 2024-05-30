@@ -33,7 +33,7 @@ def relayData(data):
 
     userID = "TV9JRL"
     statusToColor = {"good" : "#0CFF00", "neutral" : "#FBFF00", "bad" : "#FF0000"}
-    thresholdList = {"heartRate" : [60.0,100.0,170.0,50.0], "spo2" : [95.0, 100.0, 93.0, 100.0], "temp" : [98.0, 99.0, 100.0, 97.0]}
+    thresholdList = {"heartRate" : [60.0,160.0,190.0,50.0], "spo2" : [95.0, 100.0, 100.0, 90.0], "temp" : [98.0, 99.0, 101.0, 97.0]}
     statusList = {"heartRate" : "", "spo2" : "", "temp" : ""}
     statReport = ""
     for i in data:
@@ -41,25 +41,31 @@ def relayData(data):
         if float(data[i]) >= thresholdList[i][0] and float(data[i]) <= thresholdList[i][1]:
           statusList[i] = "good"
         else:
-          if float(data[i]) > thresholdList[i][1]:
-            if i == "heartRate":
-              if float(data[i]) <= thresholdList[i][2]:
-                statusList[i] = "neutral"
-              else:
+          if i == "spo2":
+              if float(data[i]) < thresholdList[i][3]:
                 statusList[i] = "bad"
-            elif i == "spo2":
-              statusList[i] = "bad"
-              
-            elif i == "temp":
-              if float(data[i]) <= thresholdList[i][2]:
-                statusList[i] = "neutral"
-              elif float(data[i]) > thresholdList[i][2]:
-                statusList[i] = "bad"
-          elif float(data[i]) < thresholdList[i][0]:
-            if float(data[i]) >= thresholdList[i][3]:
-              statusList[i] = "neutral"
-            else:
-              statusList[i] = "bad"
+              elif float(data[i]) < thresholdList[i][1] and float(data[i]) > thresholdList[i][3]:
+                statusList[i] = "neutral"  
+          else:
+              if float(data[i]) > thresholdList[i][1]:
+                if i == "heartRate":
+                  if float(data[i]) <= thresholdList[i][2]:
+                    statusList[i] = "neutral"
+                  else:
+                    statusList[i] = "bad"
+                #elif i == "spo2":
+                  #statusList[i] = "bad"
+                  
+                elif i == "temp":
+                  if float(data[i]) <= thresholdList[i][2]:
+                    statusList[i] = "neutral"
+                  elif float(data[i]) > thresholdList[i][2]:
+                    statusList[i] = "bad"
+              elif float(data[i]) < thresholdList[i][0]:
+                if float(data[i]) >= thresholdList[i][3]:
+                  statusList[i] = "neutral"
+                else:
+                  statusList[i] = "bad"
       
       counters = {"good" : 0, "neutral" : 0, "bad" : 0}
       
