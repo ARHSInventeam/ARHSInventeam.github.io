@@ -44,7 +44,7 @@ def relayData(data):
           if i == "spo2":
               if float(data[i]) < thresholdList[i][3]:
                 statusList[i] = "bad"
-              elif float(data[i]) < thresholdList[i][1] and float(data[i]) > thresholdList[i][3]:
+              elif float(data[i]) < thresholdList[i][1] and float(data[i]) > thresholdList[i][3] and float(data[i]) < thresholdList[i][0]:
                 statusList[i] = "neutral"  
           else:
               if float(data[i]) > thresholdList[i][1]:
