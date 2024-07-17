@@ -1,0 +1,157 @@
+from sartopo_python import SartopoSession
+import time
+import json
+import requests
+#sts=SartopoSession("localhost:8080","8G1DF")
+
+print(" ")
+print("---------------------------------------------------------------")
+print(" ")
+
+
+
+sts2=SartopoSession(    
+    "sartopo.com",  #sartopo.com
+    "8G1DF",
+    #Downloads\ConfigParserTestSartopo.INI
+    #../../sts.ini
+     configpath="Downloads/ConfigParserTestSartopo.INI",
+     account="arhsinventeam@gmail.com")
+
+
+
+#sts = SartopoSession(
+    #"https://caltopo.com/api/v1/position/report/TEST?id=1&lat=42.38187&lng=-72.51711"
+#)
+
+
+#sts2.apiUrlMid = "/api/v1/position/report/TEST?id=1&lat=36.47375&lng=-118.85302"
+
+#fid2=sts2.addFolder("MyOnlineFolder")   
+
+print(" ")
+print("---------------------------------------------------------------")
+print(" ")
+
+
+#sts2.addMarker(39,-120,"onlineStuffTwo")
+#sts2.apiUrlMid = "https://caltopo.com/api/v1/position/report/TEST?id=1&lat=42.38187&lng=-72.51511"
+
+#sts2.addAppTrack([[-72.51539, 42.38194], [-72.51539, 42.38194]], "TEST", "Test", startTrack= True, since=1710641675023, existingId= "123")
+
+#print(sts2.mapData)
+
+
+
+print(" ")
+print("---------------------------------------------------------------")
+print(" ")
+
+#sts2.addLine(39, -120, 100, 50 , "test line")
+
+#r2=sts2.getFeatures("Markers")
+
+#sts2.sendRequest()
+
+#sts2.apiUrlMid = "/api/v1/position/report/TEST?id=1&lat=42.38090&lng=-72.51280"
+
+
+#id='6d5d81d5-fdd6-4d7c-b1a9-4cd2775fc2f4',className="LiveTrack", title="test", properties={'marker-symbol': 'point', 'creator': 'TV9JRL', 'marker-color': '00D8FF', 'description': "uw", 'title': 'test2', 'marker-size': '1', 'class': 'Marker', 'updated': 1711994581495, 'marker-rotation': None}, timeout=10000)
+#id='b65873b9-b8a9-45a3-891e-40af0a401037',className="LiveTrack", title="test", properties={'stroke-opacity': 1, 'creator': 'TV9JRL', 'pattern': 'solid', 'stroke-width': 1, 'title': 'test', 'deviceId': 'FLEET:TEST-1', 'stroke': '#0068FF', 'class': 'LiveTrack', 'updated': 1711986278000}, timeout=10000
+sts2.editFeature(id='6d5d81d5-fdd6-4d7c-b1a9-4cd2775fc2f4',className="Marker", title="test", properties={'marker-symbol': 'point', 'creator': 'TV9JRL', 'marker-color': '#27FF00', 'description': 'bluea', 'title': 'test2', 'marker-size': '1', 'class': 'Marker', 'updated': 1711996815937, 'marker-rotation': None}, timeout=10000)
+#{'stroke-opacity': 1, 'creator': 'TV9JRL', 'pattern': 'solid', 'stroke-width': 1, 'title': 'test', 'deviceId': 'FLEET:TEST-1', 'stroke': '#FF0000', 'class': 'LiveTrack', 'updated': 1710953963000}
+#print(sts2.mapData)
+
+
+#url = "https://sartopo.com/api/v1/map/8G1DF/Livetrack/b65873b9-b8a9-45a3-891e-40af0a401037"
+#r=requests.post(url,allow_redirects=False)
+#,data={'stroke-opacity': 1, 'creator': 'TV9JRL', 'pattern': 'solid', 'stroke-width': 1, 'title': 'test', 'deviceId': 'FLEET:TEST-1', 'stroke': '#0068FF', 'class': 'LiveTrack', 'updated': 1711986278000}
+#timeout=timeout,proxies=self.proxyDict,
+#print(r.json())
+#"0d7a0a43-2866-4a44-86e0-caa4cdb735b1"s
+
+#print(sts2.mapData)
+
+print("---------------------------------------")
+#print(sts2.getFeatures("Marker"))
+#sts2.sendUserdata()
+#sts2.setupSession()
+#print(sts2.apiUrlMid)
+#print(sts2.getFeature("AppTrack"))
+#print("map dat  ", sts2.mapData)
+
+#42.38219, -72.51450
+
+#print(sts2.mapData)
+#sts2.editFeature()
+#"https://caltopo.com/api/v1/position/report/TEST?id=1&lat=42.38219&lng=-72.51450"
+
+'''''
+while True:
+    #"42.38178, -72.51641"
+    latlong = input("lat, long> ")
+    latlong = latlong.replace(" ", "")
+    print(latlong)
+
+    c = -1
+    coordList = []
+
+    for i in latlong.split(","):
+        c+=1
+        print(i)
+        coordList.insert(c,i)
+
+    lat = coordList[0]
+    long = coordList[1]
+    name = "TEST"
+    id = "1"
+
+    requests.get("https://caltopo.com/api/v1/position/report/%s?id=%s&lat=%s&lng=%s" %(name, id, lat, long))
+'''''
+
+#https://caltopo.com/api/v1/position/report/TEST?id=123&lat=42.38197&lng=-72.51199
+
+
+#sts2.editFeature("0d7a0a43-2866-4a44-86e0-caa4cdb735b1", className="LiveTrack")
+
+#42.38195,
+#-72.51399
+
+
+
+
+
+
+#print("map proxy dict  ", sts2.proxyDict)
+#print("domain and port  ", sts2.domainAndPort)
+
+print("---------------------------------------")
+
+
+print(" ")
+print("--------------------------------------------------------------")
+print(" ")
+
+#sts2.delMarker("ac90f90b-147e-4fdd-8065-3715ea93ff81")
+#one = sts2.addLineAssignment("50, -130")
+#two = sts2.addLineAssignment("60, -300")
+
+#sts2.addLine([[38,-117],[45,-93]], "test line")
+#sts2.addPolygon([[-72.51420, 42.38096], [-72.51417, 42.37997], [-72.51359, 42.38148], [-72.51171, 42.38167], [-72.51148, 42.38079], [-72.51184, 42.37968]],'ARHS TWO')
+#wsdec
+#[[-72.51420, 42.38096], [-72.51417, 42.37997], [-72.51359, 42.38148], [-72.51171, 42.38167], [-72.51148, 42.38079], [-72.51184, 42.37968]]
+#[[42.37968, -72.51184]]
+
+
+#[[42.38096, -72.51420], [42.37997, -72.51417], [42.38148, -72.51359],[42.38167, -72.51171],[42.38079, -72.51148],[42.37968, -72.51184]]
+
+print(" ")
+print("---------------------------------------------------------------")
+print(" ")
+#sts2.addMarker(39.01,-119.99,"onlineStuff2",folderId=fid2)
+#r2=sts2.getFeatures("Marker")s
+#print("return value from getFeatures('Marker'):")
+#print(json.dumps(r2,indent=3))
+#time.sleep(15)
+#print("moving online after a pause:"+r2[0]['id'])
+#sts2.addMarker(39.02,-119.98,r2[0]['properties']['title'],existingId=r2[0]['id'])
